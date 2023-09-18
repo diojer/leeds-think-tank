@@ -18,6 +18,6 @@
     "password": "2UHaGJW0eBpW0Bd1S2HoPLVCerB9OTuS",
     "database": "lsttdb",
     "host": "dpg-ck446936fquc73a6sej0-a",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }
