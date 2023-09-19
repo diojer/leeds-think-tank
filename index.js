@@ -1,9 +1,15 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const session = require("express-session");
 
 app.use(express.json());
 app.use(cors());
+app.use(
+  session({
+    secret: "66849fbkgfdg",
+  })
+);
 
 const db = require("./models");
 
