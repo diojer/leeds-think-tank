@@ -1,15 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const session = require("express-session");
 
 app.use(express.json());
 app.use(cors());
-app.use(
-  session({
-    secret: "66849fbkgfdg",
-  })
-);
 
 const db = require("./models");
 
@@ -18,6 +12,7 @@ app.use("/articles", require("./routes/Articles"));
 app.use("/mailinglist", require("./routes/MailingList"));
 app.use("/sponsors", require("./routes/Sponsors"));
 app.use("/reports", require("./routes/Reports"));
+app.use("/users", require("./routes/Users"));
 
 db.sequelize.sync().then(() => {
   app.listen(process.env.PORT || 3001, () => {
