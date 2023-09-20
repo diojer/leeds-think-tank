@@ -40,13 +40,8 @@ app.use("/sponsors", require("./routes/Sponsors"));
 app.use("/reports", require("./routes/Reports"));
 app.use("/users", require("./routes/Users"));
 
-const PORT = 3001;
-if (process.env.PORT) {
-  PORT = process.env.PORT;
-}
-
 db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log("Server running on Port " + PORT);
+  app.listen(process.env.PORT || 3001, () => {
+    console.log("Server running");
   });
 });
