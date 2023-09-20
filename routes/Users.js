@@ -2,10 +2,21 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
+const session = require("express-session");
 
-router.get("/", async (req, res) => {
-  const listOfUsers = await Users.findAll();
-  res.json(listOfUsers);
+// router.get("/", async (req, res) => {
+//   const listOfUsers = await Users.findAll();
+//   res.json(listOfUsers);
+// });
+
+router.get("/login", async (req, res) => {
+  if (req.session.user) {
+    res.json({
+      login: true,
+      username: req.session.user.username,
+      role: req.session.user.role,
+    });
+  }
 });
 
 router.post("/login", async (req, res) => {
@@ -18,7 +29,7 @@ router.post("/login", async (req, res) => {
     });
     return;
   }
-  bcrypt.compare(password, user.password, (err, result) => {
+  bcrypt.compare(password, user.password, (err, response) => {
     if (err) {
       res.json({
         message: err,
@@ -26,7 +37,8 @@ router.post("/login", async (req, res) => {
       });
       return;
     }
-    if (result) {
+    if (response) {
+      req.session.user = { username: user.username, role: user.role };
       res.json({
         message: "Login successful",
         valid: true,
