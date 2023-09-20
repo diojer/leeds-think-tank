@@ -10,8 +10,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://leedsthinktank.org.uk/",
-      "https://funny-travesseiro-f2f2fc.netlify.app/",
+      "https://leedsthinktank.org.uk",
+      "https://funny-travesseiro-f2f2fc.netlify.app",
       "https://leeds-think-tank-server.onrender.com",
     ],
     methods: ["GET", "POST"],
