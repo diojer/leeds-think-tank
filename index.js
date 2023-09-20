@@ -28,6 +28,9 @@ app.use(
     secret: "CHANGETHISDUMBFUCK", //CHANGE THIS TO AN .ENV DUMBFUCK
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      expires: 0,
+    },
   })
 );
 
