@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "diojer",
-    "password": "2UHaGJW0eBpW0Bd1S2HoPLVCerB9OTuS",
-    "database": "lsttdb",
-    "host": "dpg-ck446936fquc73a6sej0-a",
-    "dialect": "postgres"
+    "username": "u306888137_lsttdb",
+    "password": "44*N[i>fA",
+    "database": "u306888137_lsttdb",
+    "host": "leedsthinktank.org.uk",
+    "dialect": "mysql"
   }
 }

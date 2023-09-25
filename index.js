@@ -4,6 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const fileupload = require("express-fileupload");
+require("dotenv").config();
 
 app.use(express.json());
 app.use(
@@ -18,19 +20,18 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(fileupload());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    key: "userID",
+    key: "userSession",
     secret: "CHANGETHISDUMBFUCK", //CHANGE THIS TO AN .ENV DUMBFUCK
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      expires: 0,
-    },
+    httpOnly: true,
+    ephemeral: true,
   })
 );
 
