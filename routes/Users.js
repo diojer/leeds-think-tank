@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const jwtSecret = process.env.SECRET ? process.env.SECRET : "jwtSECRET";
+console.log(jwtSecret);
 
 router.get("/", async (req, res) => {
   const listOfUsers = await Users.findAll();
@@ -75,6 +76,10 @@ router.post("/login", async (req, res) => {
         }
       );
       req.session.user = { token: token }; //sets the session token
+      if (req.session.user) {
+        console.log("User session created");
+        console.log(req.session.user);
+      }
       //following creates a cookie which contains the JWT. Whenever the webpage is reloaded, this cookie will get set as the session cookie.
       if (remember) {
         res.cookie("rememberMe", token, {
